@@ -11,3 +11,10 @@ venv/
 # Environment variables
 .env
 .env.*
+
+# User uploaded media
+backend/media/
+media/
+
+backend/backup.json
+backup.json
