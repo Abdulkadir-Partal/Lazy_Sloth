@@ -1,0 +1,298 @@
+:root { }
+
+* {
+  box-sizing: border-box;
+}
+
+/* PAGE */
+.pomodoro-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.pomodoro-card {
+  width: 420px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+/* HEADER */
+.pomodoro-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 28px;
+}
+
+/* TIMER */
+.timer {
+  text-align: center;
+  font-size: 72px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.timer.locked {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* EDIT CONTROLS */
+.time-adjust {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.time-adjust button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+..time-adjust button:hover {
+  background: var(--input-bg);
+}
+
+.time-label {
+  font-size: 14px;
+  color: var(--muted);
+  align-self: center;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 14px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.btn-start {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-complete {
+  background: var(--success);
+  color: black;
+}
+
+.btn-cancel {
+  background: var(--danger);
+  color: white;
+}
+
+/* STATS */
+.stats {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-box {
+  background: var(--input-bg);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-title {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* GOALS */
+.goals {
+  border-top: 1px solid var(--border);
+  margin-top: 28px;
+  padding-top: 20px;
+}
+
+.goals h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+}
+
+.goal-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.time-goal,
+.task-goals {
+  margin-bottom: 20px;
+}
+
+.time-goal ul,
+.task-goals ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.time-goal li,
+.task-goals li {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.time-goal li:hover,
+.task-goals li:hover {
+  background: #111827;
+  border-color: var(--primary);
+}
+
+.time-goal li input[type="checkbox"],
+.task-goals li input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+
+.time-goal li input[type="checkbox"]:disabled,
+.task-goals li input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.time-goal li span,
+.task-goals li span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time-goal li button,
+.task-goals li button {
+  padding: 4px 8px;
+  font-size: 11px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.time-goal li button:hover,
+.task-goals li button:hover {
+  transform: translateY(-1px);
+  opacity: 0.85;
+}
+
+.time-goal-add,
+.task-add {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.time-goal-add input,
+.task-add input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  transition: border-color 0.2s;
+}
+
+.time-goal-add input:focus,
+.task-add input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.time-goal-add select,
+.task-add select {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.time-goal-add select:focus,
+.task-add select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.time-goal-add button,
+.task-add button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.time-goal-add button:hover,
+.task-add button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}

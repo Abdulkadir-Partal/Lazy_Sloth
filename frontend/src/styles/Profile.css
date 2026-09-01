@@ -1,0 +1,210 @@
+.profile-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.profile-avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: var(--text);
+}
+
+.profile-bio {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.avatar-upload {
+  margin-top: 15px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--card-bg);
+}
+
+.logout-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--danger);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.12s, opacity 0.12s;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+}
+
+.avatar-button {
+  margin-top: 10px;
+}
+
+/* Bio Section Styles */
+.bio-section {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--primary);
+  border: 1px solid var(--border);
+}
+
+.bio-display-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.bio-display {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.8;
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.bio-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bio-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.bio-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(99,102,241,0.16);
+}
+
+.bio-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bio-char-counter {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.bio-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.bio-edit-btn,
+.bio-save-btn,
+.bio-cancel-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s, opacity 0.12s, background-color 0.12s;
+}
+
+.bio-edit-btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.bio-edit-btn:hover {
+  transform: translateY(-2px);
+}
+
+.bio-save-btn {
+  background-color: var(--success);
+  color: black;
+}
+
+.bio-save-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.bio-save-btn:disabled {
+  background-color: rgba(34,197,94,0.3);
+  cursor: default;
+  opacity: 0.65;
+}
+
+.bio-cancel-btn {
+  background-color: var(--border);
+  color: var(--text);
+}
+
+.bio-cancel-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* ← Home.jsx gibi: Postlar bölümü */
+.profile-posts-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.profile-posts-section h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.no-posts-message {
+  text-align: center;
+  color: #999;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}

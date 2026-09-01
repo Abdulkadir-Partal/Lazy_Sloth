@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Theme variables derived from Pomodoro page */
+:root {
+  --bg: #0f172a;
+  --card-bg: #0f172a;
+  --muted: #9ca3af;
+  --text: #e5e7eb;
+
+  --primary: #6366f1;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --border: #1f2933;
+  --input-bg: #111827;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
