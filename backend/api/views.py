@@ -22,6 +22,39 @@ from django.http import HttpResponse
 from .serializers import (ProductSerializer, CartSerializer, CartItemSerializer,)
 from datetime import date, timedelta
 from django.utils import timezone
+import requests
+
+
+def send_verification_email(recipient, link):
+    subject = "Email Verification"
+    message = f"Verify your account: {link}"
+
+    if settings.BREVO_API_KEY:
+        response = requests.post(
+            settings.BREVO_API_URL,
+            headers={
+                "accept": "application/json",
+                "api-key": settings.BREVO_API_KEY,
+                "content-type": "application/json",
+            },
+            json={
+                "sender": {"email": settings.DEFAULT_FROM_EMAIL},
+                "to": [{"email": recipient}],
+                "subject": subject,
+                "textContent": message,
+            },
+            timeout=settings.EMAIL_TIMEOUT,
+        )
+        response.raise_for_status()
+        return
+
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[recipient],
+        fail_silently=False,
+    )
 
 
 
@@ -169,13 +202,7 @@ class CreateUserView(generics.CreateAPIView):
         # 2. verification link
         link = f"{settings.BACKEND_URL}/api/auth/verify-email/{token_obj.token}/"
 
-        # 3. email send (console backend ise terminale düşer)
-        send_mail(
-            subject="Email Verification",
-            message=f"Verify your account: {link}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-        )
+        send_verification_email(user.email, link)
 
 class VerifyEmailView(APIView):
     permission_classes = []
