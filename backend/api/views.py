@@ -167,7 +167,7 @@ class CreateUserView(generics.CreateAPIView):
         )
 
         # 2. verification link
-        link = f"http://127.0.0.1:8000/api/auth/verify-email/{token_obj.token}/"
+        link = f"{settings.BACKEND_URL}/api/auth/verify-email/{token_obj.token}/"
 
         # 3. email send (console backend ise terminale düşer)
         send_mail(

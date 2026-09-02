@@ -84,17 +84,18 @@ function Note({ note, onDelete, onUpdate }) {
       user.role === "moderator");
 
   // Image URL düzeltmesi
+  const BACKEND_URL = import.meta.env.VITE_API_URL.replace("/api", "");
+
   const imageUrl = note.image
     ? note.image.startsWith("http")
       ? note.image
-      : `http://127.0.0.1:8000${note.image}`
+      : `${BACKEND_URL}${note.image}`
     : null;
 
-  // Avatar URL düzeltmesi
   const avatarUrl = note.author_avatar
     ? note.author_avatar.startsWith("http")
       ? note.author_avatar
-      : `http://127.0.0.1:8000${note.author_avatar}`
+      : `${BACKEND_URL}${note.author_avatar}`
     : null;
 
   const handleLike = async () => {
@@ -246,7 +247,7 @@ function Note({ note, onDelete, onUpdate }) {
                   <Link to={`/profile/${comment.user_username}`} className="comment-author">
                     {comment.user_avatar && (
                       <img
-                        src={comment.user_avatar.startsWith("http") ? comment.user_avatar : `http://127.0.0.1:8000${comment.user_avatar}`}
+                        src={comment.user_avatar.startsWith("http") ? comment.user_avatar : `${BACKEND_URL}${comment.user_avatar}`}
                         alt={comment.user_username}
                         className="comment-avatar"
                       />
