@@ -33,6 +33,7 @@ from api.views import CreateUserView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
+from api.views import MediaBlobView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -43,5 +44,5 @@ urlpatterns = [
 
     path("accounts/", include("allauth.urls")
     ),
+    path("media/<path:name>", MediaBlobView.as_view(), name="database-media"),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

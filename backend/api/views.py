@@ -11,7 +11,7 @@ from .models import Report
 from .serializers import ReportSerializer
 from .serializers import TimeGoalSerializer, TaskGoalSerializer, CommentSerializer
 from .permissions import IsAdminOrModerator, IsOwnerOrAdmin, CanCreatePost, IsOwnerOrAdminOrModerator
-from .models import Note, UserProfile,PomodoroSession, PomodoroStatistics, Like, Comment, TimeGoal, TaskGoal, Product, Cart, CartItem, EmailVerificationToken
+from .models import Note, UserProfile,PomodoroSession, PomodoroStatistics, Like, Comment, TimeGoal, TaskGoal, Product, Cart, CartItem, EmailVerificationToken, MediaBlob
 from rest_framework.generics import UpdateAPIView
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from django.utils.crypto import get_random_string
@@ -23,6 +23,23 @@ from .serializers import (ProductSerializer, CartSerializer, CartItemSerializer,
 from datetime import date, timedelta
 from django.utils import timezone
 import requests
+
+
+class MediaBlobView(APIView):
+    """Public media endpoint backed by the database storage."""
+
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request, name):
+        try:
+            blob = MediaBlob.objects.only("content", "content_type").get(name=name)
+        except MediaBlob.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        response = HttpResponse(bytes(blob.content), content_type=blob.content_type)
+        response["Cache-Control"] = "public, max-age=86400"
+        return response
 
 
 def send_verification_email(recipient, link):

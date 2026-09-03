@@ -3,6 +3,23 @@ from django.contrib.auth.models import User
 import uuid
 from django.utils import timezone
 
+
+class MediaBlob(models.Model):
+    """Binary media served by the application and stored in PostgreSQL/Neon."""
+
+    name = models.CharField(max_length=500, unique=True)
+    content = models.BinaryField()
+    content_type = models.CharField(max_length=100, default="application/octet-stream")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    @property
+    def size(self):
+        return len(self.content)
+
+    def __str__(self):
+        return self.name
+
 # Create your models here.
 class EmailVerificationToken(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="email_verification")

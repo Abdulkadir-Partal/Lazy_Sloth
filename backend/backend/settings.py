@@ -198,5 +198,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media" ## Bu iki satır post image için eklendi.
+STORAGES = {
+    "default": {"BACKEND": "api.storage.DatabaseMediaStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
 
 SITE_ID = 1
