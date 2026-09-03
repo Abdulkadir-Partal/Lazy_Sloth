@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 
-..time-adjust button:hover {
+.time-adjust button:hover {
   background: var(--input-bg);
 }
 
