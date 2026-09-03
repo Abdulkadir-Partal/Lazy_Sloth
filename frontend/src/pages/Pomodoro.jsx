@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import usePomodoro from "../hooks/pomodoro";
-import "../styles/pomodoro.css";
+import "../styles/Pomodoro.css";
 import api from "../api";
 import ShareModal from "../components/ShareModal";
 import Toast from "../components/Toast";
