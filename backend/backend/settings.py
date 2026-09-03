@@ -33,6 +33,9 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://lazysloth-production.up.railway.app",
+]
 
 # Application definition
 
